@@ -5,14 +5,14 @@ self.addEventListener('install', e => {
 	  './',
 	  './index.html',
 	  './manifest.json',
-	  './icon-192.png',
-	  './icon-512.png',
-	  './badge1.png',
-	  './badge2.png',
-	  './badge3.png',
-	  './badge4.png',
-	  './badge5.png',
-	  './badge6.png'
+	  './Images/icon-192.png',
+	  './Images/icon-512.png',
+	  './Images/badge1.png',
+	  './Images/badge2.png',
+	  './Images/badge3.png',
+	  './Images/badge4.png',
+	  './Images/badge5.png',
+	  './Images/badge6.png'
 	]);
 
     })
