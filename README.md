@@ -4,7 +4,6 @@
 
 This is a **Progressive Web App (PWA)** that allows users to:
 
-- ✅ Check their $PANDA token balance on the Abstract chain
 - ✅ Generate a customized Panda-themed badge with token totals
 - ✅ Download and share your badge on social media
 - ✅ Choose from multiple artwork styles
@@ -23,7 +22,6 @@ Your assets and identity stay 100% private.
 
 | Feature                  | Description                                                             |
 |--------------------------|-------------------------------------------------------------------------|
-| 🧾 Token Balance Viewer   | Instantly checks $PANDA token balance via the Abstract chain RPC        |
 | 🎨 Badge Style Selector   | Choose from 6 stylish badge templates                                  |
 | 🖼️ Downloadable Badge     | Save your badge as a PNG for use on X, Discord, or Telegram            |                      
 | 💬 Tooltips              | Helpful hover hints for inputs and buttons                             |
