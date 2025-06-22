@@ -24,8 +24,7 @@ Your assets and identity stay 100% private.
 |--------------------------|-------------------------------------------------------------------------|
 | 🎨 Badge Style Selector   | Choose from 6 stylish badge templates                                  |
 | 🖼️ Downloadable Badge     | Save your badge as a PNG for use on X, Discord, or Telegram            |                      
-| 💬 Tooltips              | Helpful hover hints for inputs and buttons                             |
-| ❤️ Attribution           | Footer credits and links to dev profile, GitHub, and social media      |
+
 
 ---
 
