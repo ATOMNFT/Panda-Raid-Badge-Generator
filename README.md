@@ -4,7 +4,7 @@
 
 This is a **Progressive Web App (PWA)** that allows users to:
 
-- ✅ Generate a customized Panda-themed badge with token totals or rewards
+- ✅ Generate a customized Panda-themed badge
 - ✅ Download and share your badge on social media
 - ✅ Choose from multiple artwork styles
 
@@ -23,8 +23,17 @@ Your assets and identity stay 100% private.
 | Feature                  | Description                                                             |
 |--------------------------|-------------------------------------------------------------------------|
 | 🎨 Badge Style Selector   | Choose from 6 stylish badge templates                                  |
-| 🖼️ Downloadable Badge     | Save your badge as a PNG for use on X, Discord, or Telegram            |                      
+| 🖼️ Downloadable Badge     | Save your badge as a PNG for use on X, Discord, or Telegram            |
+| 🐛 Cool wiggle effect     | Badges wiggle upon hovering over them                                  |   
+| Eye pleasing UI           | Beautiful glow, subtile colors and a centered mobile friendly page     |                   
 
+---
+
+## 📋 New in V2 as of 6/26/25
+
+- ✅ Choose to display total $PANDA balance or total rewards earned
+- ✅ Cool flip sound upon badge reveal
+- ✅ X and Discord social buttons. (Each have directions pop up explaing the sharing method)
 
 ---
 
