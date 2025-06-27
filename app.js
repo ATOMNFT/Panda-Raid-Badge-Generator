@@ -5,7 +5,7 @@ const abstractProvider = new ethers.providers.JsonRpcProvider("https://api.mainn
 const canvas = document.getElementById("badgeCanvas");
 const ctx = canvas.getContext("2d");
 
-const flipSound = new Audio("flipcard.wav");
+const flipSound = new Audio("https://raw.githubusercontent.com/ATOMNFT/Panda-Raid-Badge-Generator/main/flipcard.wav");
 
 function selectImage(index) {
   document.querySelectorAll('input[type="radio"][name="badge"]').forEach((input, i) => {
