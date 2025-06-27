@@ -5,6 +5,8 @@ const abstractProvider = new ethers.providers.JsonRpcProvider("https://api.mainn
 const canvas = document.getElementById("badgeCanvas");
 const ctx = canvas.getContext("2d");
 
+const flipSound = new Audio("Audio/flipcard.mp3");
+
 function selectImage(index) {
   document.querySelectorAll('input[type="radio"][name="badge"]').forEach((input, i) => {
     input.checked = (i + 1 === index);
@@ -51,6 +53,9 @@ async function generateBadge() {
 
   const mode = document.querySelector('input[name="displayType"]:checked').value;
   const imageSrc = document.querySelector('input[name="badge"]:checked').value;
+  
+  flipSound.currentTime = 0; // reset if already playing
+  flipSound.play();
 
   canvas.classList.add('flipping');
   setTimeout(() => {
