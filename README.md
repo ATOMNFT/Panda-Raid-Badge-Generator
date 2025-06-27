@@ -1,10 +1,10 @@
 ![Header](Images/mainheader.png)
 
-# 🐼 Panda Raid Badge Generator
+# 🐼 Panda Raid Badge Generator V2
 
 This is a **Progressive Web App (PWA)** that allows users to:
 
-- ✅ Generate a customized Panda-themed badge with token totals
+- ✅ Generate a customized Panda-themed badge with token totals or rewards
 - ✅ Download and share your badge on social media
 - ✅ Choose from multiple artwork styles
 

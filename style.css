@@ -93,6 +93,32 @@ button {
   margin-top: 1rem;
 }
 
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.share-buttons button {
+  background: #1da1f2; /* Twitter Blue */
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.3s;
+}
+
+#shareDiscordBtn {
+  background: #5865F2; /* Discord Blurple */
+}
+
+.share-buttons button:hover {
+  opacity: 0.85;
+}
+
 input {
   padding: 10px;
   margin-bottom: 1rem;
@@ -103,3 +129,91 @@ input {
   width: 100%;
   max-width: 400px;
 }
+
+.toggle-options {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.toggle-options input[type="radio"] {
+  margin-right: 0.5rem;
+}
+
+.toggle-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: box-shadow 0.3s, border-color 0.3s;
+  width: 120px;
+}
+
+.toggle-card img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 0.5rem;
+}
+
+.toggle-card input[type="radio"] {
+  display: none;
+}
+
+.toggle-card span {
+  color: #ccc;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.toggle-card input[type="radio"]:checked + img {
+  box-shadow: 0 0 20px 4px #00c853;
+  border-radius: 50%;
+}
+
+.font-style-group {
+  margin: 1rem auto;
+  text-align: center;
+  color: #ccc;
+}
+
+#fontSelect {
+  padding: 8px;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  background-color: #222;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 8px;
+}
+
+#badgeCanvas {
+  transition: transform 0.6s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+#badgeCanvas.flipping {
+  transform: rotateY(180deg);
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #00c853;
+  border-radius: 50%;
+  animation: explode 0.8s forwards ease-out;
+}
+
+@keyframes explode {
+  to {
+    transform: translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
+

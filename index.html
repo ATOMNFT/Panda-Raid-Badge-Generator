@@ -3,133 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>$PANDA Raid Badge Generator</title>
-  <link rel="icon" href="Images/icon-192.png">
+  <title>Panda Raid Badge Generator</title>
+  <link rel="icon" href="Images/prbg-logo.png">
   <link rel="stylesheet" href="style.css">
-  
-    <!-- OpenGraph for Discord, Telegram, etc. -->
-  <meta property="og:title" content="Panda Raid Badge Generator" />
-  <meta property="og:description" content="For raiders, by raiders. Share the $PANDA love." />
-  <meta property="og:image" content="https://atomnft.github.io/Panda-Raid-Badge-Generator/Images/preview.png" />
-  <meta property="og:url" content="https://atomnft.github.io/Panda-Raid-Badge-Generator" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter (X) Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Panda Raid Badge Generator" />
-  <meta name="twitter:description" content="For raiders, by raiders. Share the $PANDA love." />
-  <meta name="twitter:image" content="https://atomnft.github.io/Panda-Raid-Badge-Generator/Images/preview.png" />
-  <meta name="twitter:creator" content="@atomnft" />
-  
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Bebas+Neue&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 </head>
 <body>
-  <img src="Images/prbg-logo.png" alt="$PANDA Raid Badge Generator Logo" class="logo">
-  <h1>$PANDA Raid Badge Generator 🐼</h1>
+  <img src="Images/prbg-logo.png" alt="Panda Logo" class="logo">
+  <h1>Panda Raid Badge Generator 🐼</h1>
   <p class="description">
-   Got $PANDA? Drop your Abstract wallet address, pick a badge, and flex your tokens with style.  
-   Your custom badge is downloadable and shareable. Perfect for raids, shoutouts, and socials. 🐾📸
+    For raiders, by raiders. Share the $PANDA love.<br />
+    Enter your Abstract wallet address, click "Generate Badge" to see your badge and download it to share!
   </p>
 
-  <input
-  type="text"
-  id="walletInput"
-  placeholder="Enter your wallet address"
-  title="Paste your Abstract wallet address here"
-  />
+  <input type="text" id="walletInput" placeholder="Enter your wallet address" title="Enter your Abstract wallet address here">
+
+  <div class="toggle-options">
+   <label class="toggle-card">
+     <input type="radio" name="displayType" value="balance" checked>
+     <img src="Images/Icons/Balance.png" alt="Balance Icon">
+     <span>Show Balance</span>
+   </label>
+   <label class="toggle-card">
+     <input type="radio" name="displayType" value="rewards">
+     <img src="Images/Icons/Rewards.png" alt="Rewards Icon">
+     <span>Show Rewards</span>
+   </label>
+  </div>
 
   <div class="image-options">
     <label class="image-option">
-      <img src="Images/badge1.png" onclick="selectImage(1)">
+      <img src="Images/badge1.png" onclick="selectImage(1)" title="Select badge 1">
       <input type="radio" name="badge" value="Images/badge1.png" checked>
     </label>
     <label class="image-option">
-      <img src="Images/badge2.png" onclick="selectImage(2)">
+      <img src="Images/badge2.png" onclick="selectImage(2)" title="Select badge 2">
       <input type="radio" name="badge" value="Images/badge2.png">
     </label>
     <label class="image-option">
-      <img src="Images/badge3.png" onclick="selectImage(3)">
+      <img src="Images/badge3.png" onclick="selectImage(3)" title="Select badge 3">
       <input type="radio" name="badge" value="Images/badge3.png">
     </label>
     <label class="image-option">
-      <img src="Images/badge4.png" onclick="selectImage(4)">
+      <img src="Images/badge4.png" onclick="selectImage(4)" title="Select badge 4">
       <input type="radio" name="badge" value="Images/badge4.png">
     </label>
     <label class="image-option">
-      <img src="Images/badge5.png" onclick="selectImage(5)">
+      <img src="Images/badge5.png" onclick="selectImage(5)" title="Select badge 5">
       <input type="radio" name="badge" value="Images/badge5.png">
     </label>
     <label class="image-option">
-      <img src="Images/badge6.png" onclick="selectImage(6)">
+      <img src="Images/badge6.png" onclick="selectImage(6)" title="Select badge 6">
       <input type="radio" name="badge" value="Images/badge6.png">
     </label>
   </div>
+  
+  <div class="font-style-group">
+  <label for="fontSelect">Font Style:</label>
+  <select id="fontSelect">
+    <option value="Segoe UI">Segoe UI</option>
+    <option value="Comic Sans MS">Comic Sans</option>
+    <option value="Bebas Neue">Bebas Neue</option>
+    <option value="Arial Black">Bold</option>
+  </select>
+  </div>
 
   <div class="button-group">
-    <button onclick="generateBadge()" title="Creates a badge with your $PANDA token balance">Generate Badge</button>
-    <button onclick="downloadImage()" title="Save your badge as an image to share on social media">Download Image</button>
+    <button id="generateBtn" title="Generate a badge based on your wallet">Generate Badge</button>
+    <button id="downloadBtn" title="Download your generated badge">Download Image</button>
   </div>
+
   <canvas id="badgeCanvas" width="618" height="400"></canvas>
-
-  <script>
-    const pandaTokenContract = "0x67c778b5e5705aaa46707f3f16e498beef627b0b";
-    const abstractProvider = new ethers.providers.JsonRpcProvider("https://api.mainnet.abs.xyz");
-    const ERC20_ABI = [
-      "function balanceOf(address owner) view returns (uint256)",
-      "function decimals() view returns (uint8)"
-    ];
-
-    const canvas = document.getElementById("badgeCanvas");
-    const ctx = canvas.getContext("2d");
-
-    function selectImage(index) {
-      document.querySelectorAll('input[type="radio"]').forEach((input, i) => {
-        input.checked = (i + 1 === index);
-      });
-    }
-
-    async function fetchPandaTokenBalance(wallet) {
-      try {
-        const contract = new ethers.Contract(pandaTokenContract, ERC20_ABI, abstractProvider);
-        const [rawBalance, decimals] = await Promise.all([
-          contract.balanceOf(wallet),
-          contract.decimals()
-        ]);
-        const readableBalance = ethers.utils.formatUnits(rawBalance, decimals);
-        return parseFloat(readableBalance).toLocaleString(undefined, { maximumFractionDigits: 2 });
-      } catch (err) {
-        console.error("Error fetching token balance:", err);
-        return 0;
-      }
-    }
-
-    async function generateBadge() {
-      const wallet = document.getElementById("walletInput").value.trim();
-      if (!wallet) return alert("Please enter your wallet address");
-
-      const selected = document.querySelector('input[name="badge"]:checked').value;
-      const tokenBalance = await fetchPandaTokenBalance(wallet);
-
-      const img = new Image();
-      img.onload = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        ctx.font = "bold 26px 'Segoe UI'";
-        ctx.fillStyle = "#ffffff";
-        ctx.textAlign = "center";
-        ctx.fillText(`${tokenBalance} $PANDA`, canvas.width / 2, 338);
-      };
-      img.src = selected;
-    }
-
-    function downloadImage() {
-      const link = document.createElement("a");
-      link.download = "panda-badge.png";
-      link.href = canvas.toDataURL();
-      link.click();
-    }
-  </script>
   
+  <div class="share-buttons">
+   <button id="shareXBtn">Share on X</button>
+   <button id="shareDiscordBtn">Share on Discord</button>
+  </div>
+
 	<footer style="margin-top: 2rem; text-align: center; font-size: 0.9rem; color: #aaa;">
 	  Made with ❤️ by 
 	  <a href="https://github.com/ATOMNFT" target="_blank" style="color: #00c853; text-decoration: none;">ATOMNFT</a> • 
@@ -140,6 +91,7 @@
 	  </svg>
 	</a>
 	</footer>
-  
+
+  <script src="app.js"></script>
 </body>
 </html>
