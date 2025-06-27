@@ -25,7 +25,7 @@ Your assets and identity stay 100% private.
 | 🎨 Badge Style Selector   | Choose from 6 stylish badge templates                                  |
 | 🖼️ Downloadable Badge     | Save your badge as a PNG for use on X, Discord, or Telegram            |
 | 🐛 Cool wiggle effect     | Badges wiggle upon hovering over them                                  |   
-| Eye pleasing UI           | Beautiful glow, subtile colors and a centered mobile friendly page     |                   
+| 📱 Eye pleasing UI           | Beautiful glow, subtile colors and a centered mobile friendly page     |                   
 
 ### 📋 New in V2 as of 6/26/25
 
