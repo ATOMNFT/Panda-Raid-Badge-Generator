@@ -27,9 +27,7 @@ Your assets and identity stay 100% private.
 | 🐛 Cool wiggle effect     | Badges wiggle upon hovering over them                                  |   
 | Eye pleasing UI           | Beautiful glow, subtile colors and a centered mobile friendly page     |                   
 
----
-
-## 📋 New in V2 as of 6/26/25
+### 📋 New in V2 as of 6/26/25
 
 - ✅ Choose to display total $PANDA balance or total rewards earned
 - ✅ Cool flip sound upon badge reveal
