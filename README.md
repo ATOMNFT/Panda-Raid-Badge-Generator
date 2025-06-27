@@ -34,18 +34,6 @@ Your assets and identity stay 100% private.
 
 ---
 
-## 📦 Files Included
-
-- `index.html` – App interface and badge generator logic
-- `style.css` – Responsive and clean design
-- `manifest.json` – PWA manifest
-- `service-worker.js` – Enables offline usage
-- `badge1.png` to `badge6.png` – Premade badge template images
-- `prbg-logo.png` – App logo for UI and previews
-- `preview.png` – Social media OpenGraph preview image
-
----
-
 ## 🛠️ Powered By
 
 - [ethers.js](https://docs.ethers.org/)
